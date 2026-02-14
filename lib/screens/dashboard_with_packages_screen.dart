@@ -101,13 +101,13 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             children: [
-                              _buildStatCard('Total Sales', 'PKR 450,000', '+12.5%', Colors.green),
+                              _buildStatCard('Total Sales', 'PKR 0', '0%', Colors.green),
                               const SizedBox(width: 16),
-                              _buildStatCard('Active Bookings', '128', '+8.2%', Colors.blue),
+                              _buildStatCard('Active Bookings', '0', '0%', Colors.blue),
                               const SizedBox(width: 16),
-                              _buildStatCard('Pending Payouts', 'PKR 12,000', '+2.1%', Colors.orange),
+                              _buildStatCard('Pending Payouts', 'PKR 0', '0%', Colors.orange),
                               const SizedBox(width: 16),
-                              _buildStatCard('Rating', '4.9/5', '+0.5%', Colors.amber),
+                              _buildStatCard('Rating', '5.0', '0%', Colors.amber),
                             ],
                           ),
                         ),
