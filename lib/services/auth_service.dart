@@ -104,5 +104,13 @@ class AuthService {
     return null;
   }
 
+  static Future<String?> getToken() async {
+    if (_token != null) return _token;
+    
+    final prefs = await SharedPreferences.getInstance();
+    _token = prefs.getString('token');
+    return _token;
+  }
+
   static String? get token => _token;
 }
