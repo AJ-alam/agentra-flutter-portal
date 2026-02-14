@@ -1,6 +1,6 @@
 class ApiConfig {
-  // static const String BASE_URL = 'https://agentra-backend.vercel.app/api';
-  static const String BASE_URL = 'http://10.0.2.2:5000/api'; // For Android Emulator
+  static const String BASE_URL = 'https://agentra-backend.vercel.app/api';
+  // static const String BASE_URL = 'http://10.0.2.2:5000/api'; // For Android Emulator
   
   // Use this for Web or iOS Simulator:
   // static const String BASE_URL = 'http://localhost:5000/api';
