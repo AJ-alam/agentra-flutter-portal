@@ -4,6 +4,7 @@ import '../widgets/side_navigation_drawer.dart';
 import '../widgets/custom_button.dart';
 import '../services/package_service.dart';
 import '../models/package.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DashboardWithPackagesScreen extends StatefulWidget {
   const DashboardWithPackagesScreen({Key? key}) : super(key: key);
@@ -186,7 +187,7 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
                               ),
                               delegate: SliverChildBuilderDelegate(
                                 (context, index) => _buildPackageCard(context, _packages[index]),
-                                itemCount: _packages.length,
+                                childCount: _packages.length,
                               ),
                             ),
                           ),
