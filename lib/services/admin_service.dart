@@ -31,7 +31,17 @@ class AdminService {
 
   static Future<List<dynamic>> getUnverifiedAgents() async {
     try {
-      final response = await http.get(Uri.parse(ApiConfig.UNVERIFIED_AGENTS));
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString('token');
+      if (token == null) return [];
+
+      final response = await http.get(
+        Uri.parse(ApiConfig.UNVERIFIED_AGENTS),
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': token,
+        },
+      );
       
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
@@ -46,7 +56,17 @@ class AdminService {
 
   static Future<bool> verifyAgent(String id) async {
     try {
-      final response = await http.put(Uri.parse(ApiConfig.verifyAgent(id)));
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString('token');
+      if (token == null) return false;
+
+      final response = await http.put(
+        Uri.parse(ApiConfig.verifyAgent(id)),
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': token,
+        },
+      );
       return response.statusCode == 200;
     } catch (e) {
       print('Verify agent error: $e');
