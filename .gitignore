@@ -43,3 +43,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Exception: Allow web build folder for Netlify deployment
+!/build/web/
