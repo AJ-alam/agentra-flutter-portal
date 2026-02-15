@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'theme/app_theme.dart';
 import 'screens/splash_screen.dart';
 import 'screens/login_screen.dart';
@@ -32,8 +32,8 @@ class AgentraAgentPortal extends StatelessWidget {
           error: AppColors.error,
         ),
         scaffoldBackgroundColor: AppColors.background,
-        textTheme: GoogleFonts.interTextTheme(),
-        fontFamily: GoogleFonts.inter().fontFamily,
+        textTheme: ThemeData.light().textTheme,
+        fontFamily: TextStyle().fontFamily,
       ),
       initialRoute: '/',
       routes: {

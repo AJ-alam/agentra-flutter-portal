@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import '../services/admin_service.dart';
 import '../theme/app_theme.dart';
 
@@ -55,7 +55,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Admin Dashboard', style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
+        title: Text('Admin Dashboard', style: TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: Colors.white,
         elevation: 1,
         actions: [
@@ -75,7 +75,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
               ? Center(
                   child: Text(
                     'No unverified agents found.',
-                    style: GoogleFonts.inter(fontSize: 18, color: Colors.grey),
+                    style: TextStyle(fontSize: 18, color: Colors.grey),
                   ),
                 )
               : ListView.builder(
@@ -96,7 +96,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                                 Expanded(
                                   child: Text(
                                     agent['businessName'] ?? 'Unknown Business',
-                                    style: GoogleFonts.outfit(
+                                    style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -110,7 +110,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                                   ),
                                   child: Text(
                                     'Pending',
-                                    style: GoogleFonts.inter(
+                                    style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w600,
                                       color: Colors.orange,
@@ -120,11 +120,11 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                               ],
                             ),
                             const SizedBox(height: 8),
-                            Text('Email: ${agent['email']}', style: GoogleFonts.inter()),
-                            Text('Phone: ${agent['phone']}', style: GoogleFonts.inter()),
-                            Text('CNIC: ${agent['cnic']}', style: GoogleFonts.inter()),
+                            Text('Email: ${agent['email']}', style: TextStyle()),
+                            Text('Phone: ${agent['phone']}', style: TextStyle()),
+                            Text('CNIC: ${agent['cnic']}', style: TextStyle()),
                             if (agent['licenseNumber'] != null)
-                              Text('License: ${agent['licenseNumber']}', style: GoogleFonts.inter()),
+                              Text('License: ${agent['licenseNumber']}', style: TextStyle()),
                             const SizedBox(height: 16),
                             SizedBox(
                               width: double.infinity,

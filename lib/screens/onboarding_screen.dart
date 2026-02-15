@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import '../theme/app_theme.dart';
 import '../widgets/custom_button.dart';
 
@@ -85,7 +85,7 @@ class OnboardingScreen extends StatelessWidget {
                           children: [
                             TextSpan(
                               text: "People don't take trips, trips take ",
-                              style: GoogleFonts.outfit(
+                              style: TextStyle(
                                 fontSize: 36,
                                 fontWeight: FontWeight.w900,
                                 color: const Color(0xFF1B1E28),
@@ -94,7 +94,7 @@ class OnboardingScreen extends StatelessWidget {
                             ),
                             TextSpan(
                               text: 'people',
-                              style: GoogleFonts.outfit(
+                              style: TextStyle(
                                 fontSize: 36,
                                 fontWeight: FontWeight.w900,
                                 color: AppColors.orange,
@@ -117,7 +117,7 @@ class OnboardingScreen extends StatelessWidget {
                         child: Text(
                           '"To get the best out of your journey, just open our travel app and go where you like, we\'re always here to support you"',
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.inter(
+                          style: TextStyle(
                             color: const Color(0xFF7D848D),
                             fontSize: 17,
                             fontWeight: FontWeight.w500,

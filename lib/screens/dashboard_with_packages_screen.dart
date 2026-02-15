@@ -4,7 +4,7 @@ import '../widgets/side_navigation_drawer.dart';
 import '../widgets/custom_button.dart';
 import '../services/package_service.dart';
 import '../models/package.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'edit_package_screen.dart';
 
 class DashboardWithPackagesScreen extends StatefulWidget {
@@ -58,7 +58,7 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
                     children: [
                       Text(
                         'Welcome back, Agent!',
-                        style: GoogleFonts.outfit(
+                        style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.w900,
                           color: const Color(0xFF1B1E28),
@@ -66,7 +66,7 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
                       ),
                       Text(
                         'Check your travel portal overview today',
-                        style: GoogleFonts.inter(
+                        style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                           color: const Color(0xFF7D848D),
@@ -118,7 +118,7 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
                           children: [
                             Text(
                               'Your Packages',
-                              style: GoogleFonts.outfit(
+                              style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w900,
                                 color: const Color(0xFF1B1E28),
@@ -130,7 +130,7 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
                               },
                               child: Text(
                                 '+ Add New',
-                                style: GoogleFonts.inter(
+                                style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   color: AppColors.primary,
                                 ),
@@ -162,7 +162,7 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
                                   const SizedBox(height: 16),
                                   Text(
                                     'No packages created yet',
-                                    style: GoogleFonts.inter(
+                                    style: TextStyle(
                                       color: const Color(0xFF7D848D),
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
@@ -221,7 +221,7 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
         children: [
           Text(
             title.toUpperCase(),
-            style: GoogleFonts.inter(
+            style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w800,
               color: const Color(0xFF7D848D),
@@ -231,7 +231,7 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
           const SizedBox(height: 12),
           Text(
             value,
-            style: GoogleFonts.outfit(
+            style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w900,
               color: const Color(0xFF1B1E28),
@@ -242,7 +242,7 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
             children: [
               Text(
                 change,
-                style: GoogleFonts.inter(
+                style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w700,
                   color: Colors.green,
@@ -251,7 +251,7 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
               const SizedBox(width: 4),
               Text(
                 'vs last month',
-                style: GoogleFonts.inter(
+                style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: const Color(0xFF7D848D),
@@ -268,7 +268,7 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
     final confirm = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Delete Package', style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
+        title: Text('Delete Package', style: TextStyle(fontWeight: FontWeight.bold)),
         content: const Text('Are you sure you want to delete this package? This action cannot be undone.'),
         actions: [
           TextButton(
@@ -343,7 +343,7 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
                           const SizedBox(width: 4),
                           Text(
                             package.rating?.toString() ?? '4.8',
-                            style: GoogleFonts.inter(
+                            style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w800,
                             ),
@@ -363,7 +363,7 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
               children: [
                 Text(
                   package.title,
-                  style: GoogleFonts.outfit(
+                  style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w900,
                     color: const Color(0xFF1B1E28),
@@ -374,7 +374,7 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
                 const SizedBox(height: 4),
                 Text(
                   '${package.duration} | Full Tour',
-                  style: GoogleFonts.inter(
+                  style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                     color: const Color(0xFF7D848D),
@@ -389,7 +389,7 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
                       children: [
                         Text(
                           'PRICE',
-                          style: GoogleFonts.inter(
+                          style: TextStyle(
                             fontSize: 10,
                             fontWeight: FontWeight.w800,
                             color: const Color(0xFF7D848D),
@@ -398,7 +398,7 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
                         ),
                         Text(
                           'PKR ${package.price}',
-                          style: GoogleFonts.outfit(
+                          style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w900,
                             color: AppColors.orange,

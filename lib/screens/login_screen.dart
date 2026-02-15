@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_input.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import '../services/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   // Title
                   Text(
                     'Sign in now',
-                    style: GoogleFonts.outfit(
+                    style: TextStyle(
                       fontSize: 36,
                       fontWeight: FontWeight.w900,
                       color: const Color(0xFF1B1E28),
@@ -64,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 12),
                   Text(
                     'Please sign in to continue our app',
-                    style: GoogleFonts.inter(
+                    style: TextStyle(
                       color: const Color(0xFF7D848D),
                       fontSize: 17,
                       fontWeight: FontWeight.w500,
@@ -114,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Text(
                         'Don\'t have an account? ',
-                        style: GoogleFonts.inter(
+                        style: TextStyle(
                           color: const Color(0xFF7D848D),
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -126,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                         child: Text(
                           'Sign up',
-                          style: GoogleFonts.inter(
+                          style: TextStyle(
                             color: AppColors.orange,
                             fontWeight: FontWeight.w700,
                             fontSize: 16,

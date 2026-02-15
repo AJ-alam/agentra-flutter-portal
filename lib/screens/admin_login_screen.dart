@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_input.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import '../services/admin_service.dart';
 
 class AdminLoginScreen extends StatefulWidget {
@@ -52,7 +52,7 @@ class _AdminLoginScreenState extends State<AdminLoginScreen> {
                   const SizedBox(height: 20),
                   Text(
                     'Admin Portal',
-                    style: GoogleFonts.outfit(
+                    style: TextStyle(
                       fontSize: 36,
                       fontWeight: FontWeight.w900,
                       color: const Color(0xFF1B1E28),
@@ -62,7 +62,7 @@ class _AdminLoginScreenState extends State<AdminLoginScreen> {
                   const SizedBox(height: 12),
                   Text(
                     'Enter master credentials to manage agents',
-                    style: GoogleFonts.inter(
+                    style: TextStyle(
                       color: const Color(0xFF7D848D),
                       fontSize: 17,
                       fontWeight: FontWeight.w500,
