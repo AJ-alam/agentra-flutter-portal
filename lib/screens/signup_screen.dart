@@ -87,30 +87,103 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 48),
                 // Fields
-                CustomInput(controller: _nameController, hint: 'Name'),
+                CustomInput(
+                  controller: _nameController,
+                  hint: 'Name',
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Name is required';
+                    }
+                    return null;
+                  },
+                ),
                 const SizedBox(height: 16),
-                CustomInput(controller: _businessNameController, hint: 'Business Name'),
+                CustomInput(
+                  controller: _businessNameController,
+                  hint: 'Business Name',
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Business name is required';
+                    }
+                    return null;
+                  },
+                ),
                 const SizedBox(height: 16),
                 CustomInput(
                   controller: _emailController,
                   hint: 'Email',
                   keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Email is required';
+                    }
+                    // Email regex validation
+                    final emailRegex = RegExp(r'^[^\s@]+@[^\s@]+\.[^\s@]+$');
+                    if (!emailRegex.hasMatch(value.trim())) {
+                      return 'Enter a valid email address';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 16),
-                CustomInput(controller: _cnicController, hint: 'CNIC'),
+                CustomInput(
+                  controller: _cnicController,
+                  hint: 'CNIC (XXXXX-XXXXXXX-X)',
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'CNIC is required';
+                    }
+                    // Pakistani CNIC format: XXXXX-XXXXXXX-X
+                    final cnicRegex = RegExp(r'^\d{5}-\d{7}-\d$');
+                    if (!cnicRegex.hasMatch(value.trim())) {
+                      return 'Invalid CNIC. Use format: XXXXX-XXXXXXX-X';
+                    }
+                    return null;
+                  },
+                ),
                 const SizedBox(height: 16),
-                CustomInput(controller: _licenseController, hint: 'Licence number'),
+                CustomInput(
+                  controller: _licenseController,
+                  hint: 'Licence number',
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'License number is required';
+                    }
+                    return null;
+                  },
+                ),
                 const SizedBox(height: 16),
                 CustomInput(
                   controller: _contactController,
-                  hint: 'Contact Number',
+                  hint: 'Contact Number (03XX-XXXXXXX)',
                   keyboardType: TextInputType.phone,
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Contact number is required';
+                    }
+                    // Pakistani phone format: 03XX-XXXXXXX or +923XX-XXXXXXX
+                    final phoneRegex = RegExp(r'^(\+92|0)?3\d{2}-?\d{7}$');
+                    if (!phoneRegex.hasMatch(value.trim().replaceAll(' ', ''))) {
+                      return 'Invalid phone. Use format: 03XX-XXXXXXX';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 16),
                 CustomInput(
                   controller: _passwordController,
                   hint: '**********',
                   isPassword: true,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Password is required';
+                    }
+                    if (value.length < 8) {
+                      return 'Password must be at least 8 characters';
+                    }
+                    return null;
+                  },
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10, left: 4),
