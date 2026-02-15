@@ -78,18 +78,34 @@ class AdminService {
     try {
       final prefs = await SharedPreferences.getInstance();
       final token = prefs.getString('token');
-      if (token == null) return false;
+      
+      print('🔍 Reject Agent Debug:');
+      print('  Agent ID: $id');
+      print('  Token exists: ${token != null}');
+      print('  Token: ${token?.substring(0, 20)}...');
+      
+      if (token == null) {
+        print('❌ No token found');
+        return false;
+      }
+
+      final url = ApiConfig.rejectAgent(id);
+      print('  URL: $url');
 
       final response = await http.delete(
-        Uri.parse(ApiConfig.rejectAgent(id)),
+        Uri.parse(url),
         headers: {
           'Content-Type': 'application/json',
           'x-auth-token': token,
         },
       );
+      
+      print('  Response Status: ${response.statusCode}');
+      print('  Response Body: ${response.body}');
+      
       return response.statusCode == 200;
     } catch (e) {
-      print('Reject agent error: $e');
+      print('❌ Reject agent error: $e');
       return false;
     }
   }
