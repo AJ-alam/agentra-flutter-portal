@@ -18,4 +18,9 @@ class ApiConfig {
   static const String AGENT_PROFILE = '$BASE_URL/auth/agent/profile';
   static const String UPDATE_AGENT_PROFILE = '$BASE_URL/auth/agent/profile';
   static const String AGENT_DASHBOARD = '$BASE_URL/dashboard/agent';
+
+  // ===== ADMIN ENDPOINTS =====
+  static const String OWNER_LOGIN = '$BASE_URL/auth/owner/login';
+  static const String UNVERIFIED_AGENTS = '$BASE_URL/auth/owner/agents';
+  static String verifyAgent(String id) => '$BASE_URL/auth/owner/agents/$id/verify';
 }

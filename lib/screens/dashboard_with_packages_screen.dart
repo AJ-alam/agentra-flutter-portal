@@ -5,6 +5,7 @@ import '../widgets/custom_button.dart';
 import '../services/package_service.dart';
 import '../models/package.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'edit_package_screen.dart';
 
 class DashboardWithPackagesScreen extends StatefulWidget {
   const DashboardWithPackagesScreen({Key? key}) : super(key: key);
@@ -263,6 +264,37 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
     );
   }
 
+  Future<void> _handleDelete(String id) async {
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Delete Package', style: GoogleFonts.outfit(fontWeight: FontWeight.bold)),
+        content: const Text('Are you sure you want to delete this package? This action cannot be undone.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: TextButton.styleFrom(foregroundColor: AppColors.error),
+            child: const Text('Delete'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirm == true) {
+      final success = await PackageService.deletePackage(id);
+      if (success && mounted) {
+        _loadPackages();
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Package deleted successfully'), backgroundColor: const Color(0xFF4CAF50)),
+        );
+      }
+    }
+  }
+
   Widget _buildPackageCard(BuildContext context, Package package) {
     return Container(
       decoration: BoxDecoration(
@@ -374,16 +406,38 @@ class _DashboardWithPackagesScreenState extends State<DashboardWithPackagesScree
                         ),
                       ],
                     ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFF7F8F9),
-                          borderRadius: BorderRadius.circular(12),
+                    Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => EditPackageScreen(package: package),
+                              ),
+                            ).then((_) => _loadPackages());
+                          },
+                          icon: Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Colors.blue.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Icon(Icons.edit_outlined, color: Colors.blue, size: 20),
+                          ),
                         ),
-                        child: const Icon(Icons.arrow_forward, color: AppColors.primary, size: 20),
-                      ),
+                        IconButton(
+                          onPressed: () => _handleDelete(package.id),
+                          icon: Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Colors.red.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Icon(Icons.delete_outline, color: Colors.red, size: 20),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

@@ -164,7 +164,8 @@ class _SignupScreenState extends State<SignupScreen> {
                     const SizedBox(height: 16),
                     GestureDetector(
                       onTap: () {
-                        // Owner sign in logic
+                        // Navigate to Admin Login Screen
+                        Navigator.pushNamed(context, '/admin-login');
                       },
                       child: Text(
                         'SIGN IN AS AN OWNER',

@@ -8,6 +8,8 @@ import 'screens/dashboard_screen.dart';
 import 'screens/dashboard_with_packages_screen.dart';
 import 'screens/create_package_screen.dart';
 import 'screens/onboarding_screen.dart';
+import 'screens/admin_login_screen.dart';
+import 'screens/admin_dashboard_screen.dart';
 
 void main() {
   runApp(const AgentraAgentPortal());
@@ -43,6 +45,8 @@ class AgentraAgentPortal extends StatelessWidget {
         '/dashboard-packages': (context) => const DashboardWithPackagesScreen(),
         '/create-package': (context) => const CreatePackageScreen(),
         '/edit-package': (context) => const CreatePackageScreen(),
+        '/admin-login': (context) => const AdminLoginScreen(),
+        '/admin-dashboard': (context) => const AdminDashboardScreen(),
       },
     );
   }

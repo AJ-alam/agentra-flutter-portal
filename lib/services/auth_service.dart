@@ -37,7 +37,8 @@ class AuthService {
         return {'success': false, 'message': data['message'] ?? 'Login failed'};
       }
     } catch (e) {
-      return {'success': false, 'message': 'An error occurred. Please try again.'};
+      print('LOGIN ERROR: $e');
+      return {'success': false, 'message': 'Login Error: $e'};
     }
   }
 
