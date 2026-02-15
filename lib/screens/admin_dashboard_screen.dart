@@ -51,6 +51,48 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
     }
   }
 
+  Future<void> _rejectAgent(String id, String name) async {
+    // Show confirmation dialog
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Reject Agent'),
+        content: Text('Are you sure you want to reject $name? This action cannot be undone.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: TextButton.styleFrom(foregroundColor: Colors.red),
+            child: const Text('Reject'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed == true) {
+      final success = await AdminService.rejectAgent(id);
+      if (success && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('$name has been rejected'),
+            backgroundColor: Colors.red,
+          ),
+        );
+        _loadAgents();
+      } else if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Failed to reject agent.'),
+            backgroundColor: AppColors.error,
+          ),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -126,16 +168,32 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                             if (agent['licenseNumber'] != null)
                               Text('License: ${agent['licenseNumber']}', style: TextStyle()),
                             const SizedBox(height: 16),
-                            SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton(
-                                onPressed: () => _verifyAgent(agent['_id'], agent['businessName']),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.success,
-                                  foregroundColor: Colors.white,
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: OutlinedButton(
+                                    onPressed: () => _rejectAgent(agent['_id'], agent['businessName']),
+                                    style: OutlinedButton.styleFrom(
+                                      foregroundColor: Colors.red,
+                                      side: const BorderSide(color: Colors.red, width: 2),
+                                      padding: const EdgeInsets.symmetric(vertical: 14),
+                                    ),
+                                    child: const Text('Reject', style: TextStyle(fontWeight: FontWeight.bold)),
+                                  ),
                                 ),
-                                child: const Text('Approve Agent'),
-                              ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: ElevatedButton(
+                                    onPressed: () => _verifyAgent(agent['_id'], agent['businessName']),
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: AppColors.success,
+                                      foregroundColor: Colors.white,
+                                      padding: const EdgeInsets.symmetric(vertical: 14),
+                                    ),
+                                    child: const Text('Approve', style: TextStyle(fontWeight: FontWeight.bold)),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),

@@ -23,4 +23,5 @@ class ApiConfig {
   static const String OWNER_LOGIN = '$BASE_URL/auth/owner/login';
   static const String UNVERIFIED_AGENTS = '$BASE_URL/auth/owner/agents';
   static String verifyAgent(String id) => '$BASE_URL/auth/owner/agents/$id/verify';
+  static String rejectAgent(String id) => '$BASE_URL/owner/agents/$id/reject';
 }

@@ -73,4 +73,24 @@ class AdminService {
       return false;
     }
   }
+
+  static Future<bool> rejectAgent(String id) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString('token');
+      if (token == null) return false;
+
+      final response = await http.delete(
+        Uri.parse(ApiConfig.rejectAgent(id)),
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': token,
+        },
+      );
+      return response.statusCode == 200;
+    } catch (e) {
+      print('Reject agent error: $e');
+      return false;
+    }
+  }
 }
